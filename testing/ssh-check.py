@@ -17,7 +17,7 @@ def main():
 
     # connect to the ips, looking for resources to taint
     for host, name in hosts.iteritems():
-        cmd = "ssh root@{} -oBatchMode=yes -C 'echo hi' 2&>1".format(host)
+        cmd = "ssh root@{} -oBatchMode=yes -C 'echo hi'".format(host)
         returncode, _, err = call_cmd(cmd)
 
         if returncode != 0 and 'permission denied' in err.lower():
