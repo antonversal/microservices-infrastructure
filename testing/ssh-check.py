@@ -9,6 +9,7 @@ import sys
 def main():
     # get the hosts
     _, hosts, _ = call_cmd("plugins/inventory/terraform.py --hostfile")
+    to_taint = []
 
     # loop through IPs
     hosts = dict(line.split() for line in hosts.split("\n")
@@ -35,7 +36,8 @@ def main():
                 print("subprocess exited with nonzero")
                 sys.exit(1)
 
-        call_cmd("terraform apply")
+        _, out, _ = call_cmd("terraform apply")
+        print(out)
         sys.exit(1)
 
 
