@@ -66,6 +66,8 @@ def get_modules_to_taint(host, name):
                         if address == meta['ipv4_address']:
                             to_taint.append((module['path'][-1], key))
 
+    return to_taint
+
 
 if __name__ == "__main__":
     main()
